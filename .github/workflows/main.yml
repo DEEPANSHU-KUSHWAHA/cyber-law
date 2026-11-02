@@ -22,9 +22,16 @@ jobs:
     - name: Install Dependencies
       run: npm install # Uses npm install to automatically build dependencies if package-lock is missing
 
+    - name: Verify Database Schema (Drizzle Generate)
+      run: npx drizzle-kit generate
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://localhost:5432/mock' }}
 
+    - name: Run ESLint (Static Analysis)
+      run: npm run lint
 
-
+    - name: Run TypeScript Type Check
+      run: npx tsc --noEmit
 
     - name: Build Next.js Application
       run: npm run build
