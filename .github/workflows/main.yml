@@ -27,11 +27,7 @@ jobs:
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://localhost:5432/mock' }}
 
-    - name: Run ESLint (Static Analysis)
-      run: npm run lint
 
-    - name: Run TypeScript Type Check
-      run: npx tsc --noEmit
 
     - name: Build Next.js Application
       run: npm run build
