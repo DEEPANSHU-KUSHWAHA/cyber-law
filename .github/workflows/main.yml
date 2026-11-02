@@ -37,3 +37,4 @@ jobs:
       run: npm run build
       env:
         NEXT_PUBLIC_APP_ENV: production
+        DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://localhost:5432/mock' }}

@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/cases/layout,_N_T_/cases/[id]/layout,_N_T_/cases/[id]/page,_N_T_/cases/arjun"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/cases/$d$id/__PAGE__",
+    "/cases/$d$id",
+    "/cases",
+    "/_index",
+    "/_head"
+  ]
+}

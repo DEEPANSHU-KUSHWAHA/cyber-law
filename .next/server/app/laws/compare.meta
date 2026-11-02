@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/laws/layout,_N_T_/laws/compare/layout,_N_T_/laws/compare/page,_N_T_/laws/compare"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/laws/compare/__PAGE__",
+    "/laws/compare",
+    "/laws",
+    "/_index",
+    "/_head"
+  ]
+}

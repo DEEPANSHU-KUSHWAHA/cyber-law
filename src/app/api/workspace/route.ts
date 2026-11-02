@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { randomUUID } from 'node:crypto';
 import { eq } from 'drizzle-orm';
-import { db } from '@/db';
+import { databaseReady, db } from '@/db';
 import { studyProfiles } from '@/db/schema';
 import type { WorkspaceState } from '@/lib/types';
 
@@ -38,6 +38,9 @@ function validate(value: unknown): WorkspaceState {
 
 export async function GET() {
   try {
+    if (!databaseReady) {
+      return NextResponse.json({ state: emptyState() }, { headers: { 'Cache-Control': 'no-store' } });
+    }
     const jar = await cookies();
     let id = jar.get(COOKIE)?.value;
     if (!id || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id)) {
@@ -54,6 +57,9 @@ export async function GET() {
 
 export async function PUT(request: Request) {
   try {
+    if (!databaseReady) {
+      return NextResponse.json({ error: 'Workspace persistence is unavailable without a configured database.' }, { status: 503 });
+    }
     const raw = await request.text();
     if (raw.length > 250000) return NextResponse.json({ error: 'Workspace is too large.' }, { status: 413 });
     const id = (await cookies()).get(COOKIE)?.value;

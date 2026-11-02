@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/laws/layout,_N_T_/laws/[id]/layout,_N_T_/laws/[id]/page,_N_T_/laws/bnss"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/laws/$d$id/__PAGE__",
+    "/laws/$d$id",
+    "/laws",
+    "/_index",
+    "/_head"
+  ]
+}

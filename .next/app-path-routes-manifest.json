@@ -1,0 +1,21 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/health/route": "/api/health",
+  "/api/workspace/route": "/api/workspace",
+  "/cases/[id]/page": "/cases/[id]",
+  "/cases/page": "/cases",
+  "/curriculum/page": "/curriculum",
+  "/labs/[id]/page": "/labs/[id]",
+  "/labs/page": "/labs",
+  "/laws/[id]/page": "/laws/[id]",
+  "/laws/compare/page": "/laws/compare",
+  "/laws/page": "/laws",
+  "/library/[id]/page": "/library/[id]",
+  "/library/page": "/library",
+  "/page": "/",
+  "/practice/page": "/practice",
+  "/print/page": "/print",
+  "/topics/[id]/page": "/topics/[id]",
+  "/workspace/page": "/workspace"
+}

@@ -1,0 +1,21 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/health/route": "app/api/health/route.js",
+  "/api/workspace/route": "app/api/workspace/route.js",
+  "/cases/[id]/page": "app/cases/[id]/page.js",
+  "/cases/page": "app/cases/page.js",
+  "/curriculum/page": "app/curriculum/page.js",
+  "/labs/[id]/page": "app/labs/[id]/page.js",
+  "/labs/page": "app/labs/page.js",
+  "/laws/[id]/page": "app/laws/[id]/page.js",
+  "/laws/compare/page": "app/laws/compare/page.js",
+  "/laws/page": "app/laws/page.js",
+  "/library/[id]/page": "app/library/[id]/page.js",
+  "/library/page": "app/library/page.js",
+  "/page": "app/page.js",
+  "/practice/page": "app/practice/page.js",
+  "/print/page": "app/print/page.js",
+  "/topics/[id]/page": "app/topics/[id]/page.js",
+  "/workspace/page": "app/workspace/page.js"
+}
