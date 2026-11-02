@@ -22,7 +22,10 @@ export function EmptyState({ title, description, href, action = 'Explore the cou
   return <div className="empty-state"><div className="empty-icon"><Search size={28} /></div><h3>{title}</h3><p>{description}</p>{href && <Link className="button button-primary" href={href}>{action}<ArrowUpRight size={16} /></Link>}</div>;
 }
 export function Modal({ title, children, onClose, className = '' }: { title: string; children: ReactNode; onClose: () => void; className?: string }) {
-  const id = useId(); const ref = useRef<HTMLDivElement>(null); const closeRef = useRef(onClose); closeRef.current = onClose;
+  const id = useId(); const ref = useRef<HTMLDivElement>(null); const closeRef = useRef(onClose);
+  useEffect(() => {
+    closeRef.current = onClose;
+  }, [onClose]);
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
     const overflow = document.body.style.overflow; document.body.style.overflow = 'hidden';

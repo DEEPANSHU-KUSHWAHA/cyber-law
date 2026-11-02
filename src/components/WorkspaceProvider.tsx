@@ -28,7 +28,6 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
   }, []);
   useEffect(() => {
     const controller = new AbortController();
-    setReady(false);
     fetch('/api/workspace', { signal: controller.signal }).then(async response => {
       if (!response.ok) throw new Error('Unavailable');
       const body = await response.json();

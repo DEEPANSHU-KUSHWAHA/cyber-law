@@ -8,8 +8,18 @@ import { PageHeading, UnitIcon, BookmarkButton, EmptyState } from './ui';
 import { useWorkspace } from './WorkspaceProvider';
 
 export default function Curriculum() {
-  const [query, setQuery] = useState(''); const [unitFilter, setUnitFilter] = useState(0); const [open, setOpen] = useState<number[]>([1]); const [onlyRemaining, setOnlyRemaining] = useState(false); const { state } = useWorkspace();
-  useEffect(() => { const match = window.location.hash.match(/^#unit-([1-5])$/); if (match) { const id = Number(match[1]); setOpen(o => [...new Set([...o, id])]); setTimeout(() => document.getElementById(`unit-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80); } }, []);
+  const [query, setQuery] = useState(''); const [unitFilter, setUnitFilter] = useState(0); const [open, setOpen] = useState<number[]>(() => {
+    if (typeof window === 'undefined') return [1];
+    const match = window.location.hash.match(/^#unit-([1-5])$/);
+    return match ? [1, Number(match[1])] : [1];
+  }); const [onlyRemaining, setOnlyRemaining] = useState(false); const { state } = useWorkspace();
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const match = window.location.hash.match(/^#unit-([1-5])$/);
+    if (!match) return;
+    const id = Number(match[1]);
+    setTimeout(() => document.getElementById(`unit-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  }, []);
   const visibleUnits = units.filter(u => !unitFilter || u.id === unitFilter);
   const match = (id: string, title: string, summary: string) => (!query || `${id} ${title} ${summary}`.toLowerCase().includes(query.toLowerCase())) && (!onlyRemaining || !state.completed.includes(id));
   const matching = topics.filter(t => match(t.id, t.title, t.summary) && (!unitFilter || t.unit === unitFilter));
