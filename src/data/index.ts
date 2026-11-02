@@ -1,0 +1,10 @@
+import { unit1 } from './unit-1';
+import { unit2 } from './unit-2';
+import { unit3 } from './unit-3';
+import { unit4 } from './unit-4';
+import { unit5 } from './unit-5';
+export const topics = [...unit1, ...unit2, ...unit3, ...unit4, ...unit5];
+export const topicMap = Object.fromEntries(topics.map(t => [t.id, t]));
+export const getUnitTopics = (id: number) => topics.filter(t => t.unit === id);
+export const questionBank = topics.map(t => t.question);
+export const courseWordCount = topics.reduce((n, t) => n + [t.summary, ...t.objectives, ...t.sections.flatMap(s => [s.title, ...s.body]), t.practice.scenario, ...t.practice.steps, t.practice.debrief].join(' ').split(/\s+/).length, 0);

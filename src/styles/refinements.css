@@ -1,0 +1,40 @@
+/* Readability and final interaction refinements. */
+.page-description,.lesson-header>p,.law-reader-header>p,.case-reader-header>p:last-of-type { color:#738491; }
+.law-document-card>p,.lab-card>p,.case-card>p,.case-feature-content p,.book-reader-header p,.chapter-card-body p,.law-section-list article p,.case-story>p { color:#758793; }
+.lesson-prose p { color:#657887; }
+.quiz-option { color:#718491; }
+.form-input,.exam-answer { color:#617e6c; }
+.simulation-title p,.lab-mission li,.lab-conclusion p,.email-body,.email-findings p,.osint-record p,.decision-options>button { color:#768e7e; }
+.email-findings pre,.email-raw,.network-table td,.hash-result code { color:#6c8977; }
+.ai-metrics small,.threshold-control>div,.ai-samples>div,.certificate-preview p,.certificate-preview>small { color:#80958a; }
+.rubric-points>label,.exam-writing-hint,.exam-review-question p,.quiz-review-list p { color:#7b9183; }
+.print-document p,.print-document .lesson-prose p,.print-law-section p,.print-book-chapter p { color:#617b69; }
+.print-document li,.print-question li,.print-exam-question li { color:#6c8675; }
+.print-summary,.print-cover>p,.print-document .exercise-scenario { color:#718c7b; }
+.print-document a { color:#567e62; }
+.print-settings select,.print-checkbox,.print-help { color:#718b7b; }
+.rubric-points input:disabled { cursor:not-allowed; }
+@media(min-width:1201px) {
+  .overview-heading p { font-size:12px; color:#7e8d99; }
+  .hero-content p { font-size:11.5px; }
+  .hero-meta { font-size:8.5px; }
+  .unit-row h3 { font-size:12px; }
+  .unit-row-title>span,.unit-row-title>small { font-size:8px; }
+  .unit-progress-row>small { font-size:8px; }
+  .current-lesson strong { font-size:11px; }
+  .current-lesson small { font-size:7px; }
+  .journey-progress p { font-size:10px; }
+  .journey-link { font-size:10px; }
+  .featured-lab>p { font-size:11px; }
+  .law-updates strong { font-size:10px; }
+  .law-updates small { font-size:9px; }
+  .law-updates-footer { font-size:9px; }
+  .case-teaser p,.exam-teaser p { font-size:11px; }
+  .course-statline>div>span:last-child { font-size:10px; }
+}
+@media print {
+  .print-document p,.print-document .lesson-prose p,.print-law-section p,.print-book-chapter p { color:#405e4b; }
+  .print-document li,.print-question li,.print-exam-question li { color:#4e6c58; }
+  .print-summary,.print-cover>p,.print-document .exercise-scenario { color:#587561; }
+  .print-document a { color:#426b4e; }
+}
