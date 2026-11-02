@@ -17,16 +17,14 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-size: 20
-        cache: 'npm'
+        node-version: 20 # Fixed parameter name from node-size to node-version
 
     - name: Install Dependencies
-      run: npm ci
+      run: npm install # Uses npm install to automatically build dependencies if package-lock is missing
 
     - name: Verify Database Schema (Drizzle Generate)
       run: npx drizzle-kit generate
       env:
-        # Provide fallback/mock environment variables if your schema requires them to evaluate
         DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://localhost:5432/mock' }}
 
     - name: Run ESLint (Static Analysis)
@@ -38,5 +36,4 @@ jobs:
     - name: Build Next.js Application
       run: npm run build
       env:
-        # Prevents build from skipping optimization or breaking due to missing runtime env vars
         NEXT_PUBLIC_APP_ENV: production
