@@ -1,3 +1,4 @@
-import PrintView, { type PrintProps } from '@/components/PrintView';
+import { Suspense } from 'react';
+import PrintView from '@/components/PrintView';
 export const metadata = { title: 'Print & PDF studio', robots: { index: false, follow: false } };
-export default async function Page({ searchParams }: { searchParams: Promise<PrintProps> }) { const props = await searchParams; return <PrintView key={JSON.stringify(props)} {...props} />; }
+export default function Page() { return <Suspense fallback={null}><PrintView /></Suspense>; }

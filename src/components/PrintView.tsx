@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Printer, ArrowLeft, Download, Check, FileText, ScanLine } from 'lucide-react';
 import { topics, topicMap, getUnitTopics } from '@/data';
@@ -16,8 +16,18 @@ import { SourceList } from './ui';
 export type PrintProps = { scope?: string; topic?: string; unit?: string; law?: string; book?: string; case?: string; lab?: string };
 const certificateLabels: Record<string, string> = { party: 'Party name', address: 'Address / employment', make: 'Device make and model', serial: 'Device identifier', record: 'Electronic record', control: 'Lawful control and ordinary use', operation: 'Proper operation', expert: 'Expert name and designation', algorithm: 'Hash algorithm', method: 'Production method', hash: 'Output hash' };
 export default function PrintView(props: PrintProps) {
-  const router = useRouter(); const { state, ready } = useWorkspace(); const [answers, setAnswers] = useState(true); const [includeNotes, setIncludeNotes] = useState(true);
-  let initial = props.scope || 'course'; if (props.topic) initial = `topic:${props.topic}`; if (props.unit) initial = `unit:${props.unit}`; if (props.law) initial = `law:${props.law}`; if (props.book) initial = `book:${props.book}`; if (props.case) initial = `case:${props.case}`; if (props.lab) initial = `lab:${props.lab}`;
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { state, ready } = useWorkspace();
+  const [answers, setAnswers] = useState(true); const [includeNotes, setIncludeNotes] = useState(true);
+  const queryScope = searchParams.get('scope');
+  const queryTopic = searchParams.get('topic');
+  const queryUnit = searchParams.get('unit');
+  const queryLaw = searchParams.get('law');
+  const queryBook = searchParams.get('book');
+  const queryCase = searchParams.get('case');
+  const queryLab = searchParams.get('lab');
+  let initial = props.scope || queryScope || 'course'; if (props.topic || queryTopic) initial = `topic:${props.topic || queryTopic}`; if (props.unit || queryUnit) initial = `unit:${props.unit || queryUnit}`; if (props.law || queryLaw) initial = `law:${props.law || queryLaw}`; if (props.book || queryBook) initial = `book:${props.book || queryBook}`; if (props.case || queryCase) initial = `case:${props.case || queryCase}`; if (props.lab || queryLab) initial = `lab:${props.lab || queryLab}`;
   const [selection, setSelection] = useState(initial); const [kind, id] = selection.split(':');
   const selectedTopics = kind === 'topic' ? topics.filter(t => t.id === id) : kind === 'unit' ? getUnitTopics(Number(id)) : kind === 'course' ? topics : [];
   const selectedLaws = kind === 'law' ? lawDocuments.filter(l => l.id === id) : kind === 'laws' ? lawDocuments : [];
